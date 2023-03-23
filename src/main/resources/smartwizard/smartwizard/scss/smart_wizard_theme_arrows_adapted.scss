@@ -1,0 +1,91 @@
+.ft-contentwizard { 
+    @import 'original/smart_wizard_theme_arrows';
+
+    .sw-theme-arrows .step-content {
+        padding: 15px 15px;
+    }
+
+    /* Fixes for confluence */
+    .sw-theme-arrows > ul.step-anchor > li {
+        &.active, &.done {
+            small {
+                color: #fff;
+            }
+        }
+
+        //small {
+        //    color: #bbb;
+        //}
+
+        &.clickable > a:hover {
+            background: none !important;
+        }
+
+        &.clickable > a:hover {
+            color: #fff !important;
+        }
+    }
+
+    // Make Arrows also visible on small devices
+    .sw-theme-arrows > ul.step-anchor > li {
+        margin-bottom: 0;
+        margin-left: -30px;
+
+        &:first-child {
+            margin-left:0;
+        }
+    
+        > a {
+            float: left;
+
+            &:before {
+                display: none;
+            }
+
+            &:after {
+                display: none;
+            }
+        }
+
+        > div.arrow-container {
+            position: relative;
+            overflow: hidden;
+            width: 31px;
+            height: 100%;
+    
+            &::after {
+                content: " ";
+                display: block;
+                width: 0;
+                height: 0;
+                border-top: 50px solid transparent;
+                border-bottom: 50px solid transparent;
+                border-left: 30px solid #f5f5f5;
+                position: absolute;
+                top: 50%;
+                margin-top: -50px;
+                //left: 100%;
+                z-index: 2;
+            }
+    
+            &::before {
+                content: " ";
+                display: block;
+                width: 0;
+                height: 0;
+                border-top: 50px solid transparent;
+                       /* Go big on the size, and let overflow hide */
+                border-bottom: 50px solid transparent;
+                border-left: 30px solid #ddd;
+                position: absolute;
+                top: 50%;
+                margin-top: -50px;
+                margin-left: 1px;
+                //left: 100%;
+                z-index: 1;
+            }
+        }
+    }
+}
+
+

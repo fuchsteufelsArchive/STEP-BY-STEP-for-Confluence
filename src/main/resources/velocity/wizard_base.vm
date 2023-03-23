@@ -1,0 +1,172 @@
+<div class="ft-contentwizard" id="mid_$contentwizard-macroid">
+    <div class="ft-contentwizard-base">
+        <ul>
+            #if($contentwizard-steps.size() > 0)
+                #foreach($step in $contentwizard-steps)
+                    #set($stepsubtitleWithHtml = $step.stepsubtitle)
+                    <li>
+                        <a href="#$step.macroid">
+                            $step.steptitle<br />
+                            #if($stepsubtitleWithHtml)
+                                <small>
+                                    $!stepsubtitleWithHtml
+                                </small>
+                            #end
+                        </a>
+                        <div class="arrow-container"></div>
+                    </li>
+                #end
+            #else
+                <li><a href="#step-1">Demo 1<br /><small>Demo Step 1</small></a><div class="arrow-container"></div></li>
+                <li><a href="#step-2">Demo 2<br /><small>Demo Step 2</small></a><div class="arrow-container"></div></li>
+            #end
+        </ul>
+        <div>
+            #set($bodyWithHtml = $contentwizard-license.getMessage())
+            #if($contentwizard-steps.size() > 0)
+                #foreach($step in $contentwizard-steps)
+                    #if($contentwizard-license.isValid())
+                        #set($bodyWithHtml = $step.body)
+                    #end
+                    <div id="$step.macroid" class="">
+                        <h2 class="contentwizard-show-${contentwizard-stepcontenttitle}">$step.steptitle</h2>
+                        $bodyWithHtml
+                    </div>
+                #end
+            #else
+                #if($contentwizard-license.isValid())
+                    #set($bodyWithHtml = $i18n.getText("de.fuchsteufels.confluence.contentwizard.demo.instruction"))
+                #end
+                <div id="step-1" class="">
+                    <h2 class="contentwizard-show-${contentwizard-stepcontenttitle}">Demo 1</h2>
+                    $bodyWithHtml
+                </div>
+                <div id="step-2" class="">
+                    <h2 class="contentwizard-show-${contentwizard-stepcontenttitle}">Demo 2</h2>
+                    $bodyWithHtml
+                </div>
+            #end
+        </div>
+    </div>
+    ## #if($contentwizard-theme.equals("confluence"))
+    ##     <div class="aui-buttons ft-contentwizard-conf-theme ft-btn-position_$contentwizard-buttonPosition">
+    ##         <button class="aui-button ft-cw-aui-btn-prev" disabled="true">$contentwizard-prev</button>
+    ##         <button class="aui-button ft-cw-aui-btn-next">$contentwizard-next</button>
+    ##     </div>
+    ## #end
+    <data class="ft-contentwizard-settings hidden">
+        {
+            "theme": "$contentwizard-theme",
+            "transitionEffect": "$contentwizard-transitionEffect",
+            "keyNavigation": false,
+            "lang": {
+                "next": "$contentwizard-next", 
+                "previous": "$contentwizard-prev"
+            },
+            "toolbarSettings": {
+                "toolbarPosition": "$contentwizard-toolbarPosition",
+                "toolbarButtonPosition": "$contentwizard-buttonPosition"
+            },
+            "anchorSettings": {
+                "anchorClickable": true,
+                "enableAllAnchors": $contentwizard-enableallanchors,
+                "markDoneStep": true,
+                "markAllPreviousStepsAsDone": true,
+                "removeDoneStepOnNavigateBack": false,
+                "enableAnchorOnDoneStep": true
+            },
+            "showStepURLhash": true,
+            "useURLhash": true
+        }
+    </data>
+    <style>
+        #if($contentwizard-theme.equals("default")) /* sw default theme */
+            #mid_$contentwizard-macroid .sw-theme-default ul.step-anchor li.active a {
+                color: $contentwizard-selectedcolor !important;
+            }
+            #mid_$contentwizard-macroid .sw-theme-default ul.step-anchor li a::after {
+                background: $contentwizard-selectedcolor !important;
+            }
+            #mid_$contentwizard-macroid .sw-theme-default ul.step-anchor li.done a::after {
+                background: $contentwizard-donecolor !important;
+            }
+            #mid_$contentwizard-macroid .sw-theme-default ul.step-anchor li.clickable:not(.active):not(.done) a:hover {
+                color: $contentwizard-hovercolor  !important;
+            }
+        #elseif($contentwizard-theme.equals("confluence")) /* confluence theme */
+            #mid_$contentwizard-macroid .sw-theme-confluence ul.step-anchor li.active a {
+                color: $contentwizard-selectedcolor !important;
+            }
+            #mid_$contentwizard-macroid .sw-theme-confluence ul.step-anchor li a::after {
+                background: $contentwizard-selectedcolor !important;
+            }
+            #mid_$contentwizard-macroid .sw-theme-confluence ul.step-anchor li.done a::after {
+                background: $contentwizard-donecolor !important;
+            }
+            #mid_$contentwizard-macroid .ft-contentwizard-conf-theme .aui-button:active:not([disabled]) {
+                background-color: ${contentwizard-selectedcolor};
+                color: $contentwizard-selectedcolor;
+            }
+        #elseif($contentwizard-theme.equals("arrows"))
+            #mid_$contentwizard-macroid .sw-theme-arrows ul.step-anchor li.active a {
+                border-color: $contentwizard-selectedcolor !important;
+                background: $contentwizard-selectedcolor !important;
+                /* color: #fff !important; */
+            }
+            #mid_$contentwizard-macroid .sw-theme-arrows ul.step-anchor li.active a::after {
+                border-left-color: $contentwizard-selectedcolor  !important;
+            }
+            #mid_$contentwizard-macroid .sw-theme-arrows ul.step-anchor li.active div.arrow-container::after {
+                border-left-color: $contentwizard-selectedcolor  !important;
+            }
+            #mid_$contentwizard-macroid .sw-theme-arrows ul.step-anchor li.done a {
+                border-color: $contentwizard-donecolor !important;
+                background: $contentwizard-donecolor !important;
+            }
+            #mid_$contentwizard-macroid .sw-theme-arrows ul.step-anchor li.done a::after {
+                border-left-color: $contentwizard-donecolor !important;
+            }
+            #mid_$contentwizard-macroid .sw-theme-arrows ul.step-anchor li.done div.arrow-container::after {
+                border-left-color: $contentwizard-donecolor !important;
+            }
+            #mid_$contentwizard-macroid .sw-theme-arrows ul.step-anchor li.clickable:not(.active):not(.done) a:hover {
+                color: $contentwizard-hovercolor !important;
+            }
+        #elseif($contentwizard-theme.equals("circles"))
+            #mid_$contentwizard-macroid .sw-theme-circles ul.step-anchor li.active a {
+                border-color: $contentwizard-selectedcolor !important;
+                background: $contentwizard-selectedcolor !important;
+            }
+            #mid_$contentwizard-macroid .sw-theme-circles ul.step-anchor li.active a small {
+                color: $contentwizard-selectedcolor !important;
+            }
+            #mid_$contentwizard-macroid .sw-theme-circles ul.step-anchor li.done a {
+                border-color: $contentwizard-donecolor !important;
+                background: $contentwizard-donecolor !important;
+            }
+            #mid_$contentwizard-macroid .sw-theme-circles ul.step-anchor li.done a small {
+                color: $contentwizard-donecolor !important;
+            }
+            #mid_$contentwizard-macroid .sw-theme-circles ul.step-anchor li.clickable:not(.active):not(.done) a:hover {
+                color: $contentwizard-hovercolor !important;
+            }
+        #elseif($contentwizard-theme.equals("dots"))
+            #mid_$contentwizard-macroid .sw-theme-dots ul.step-anchor li.active a {
+                color: $contentwizard-selectedcolor !important;
+            }
+            #mid_$contentwizard-macroid .sw-theme-dots ul.step-anchor li.active a::after {
+                background: $contentwizard-selectedcolor !important;
+            }
+            #mid_$contentwizard-macroid .sw-theme-dots ul.step-anchor li.done a {
+                color: $contentwizard-donecolor !important;
+            }
+            #mid_$contentwizard-macroid .sw-theme-dots ul.step-anchor li.done a::after {
+                background: $contentwizard-donecolor !important;
+            }
+            #mid_$contentwizard-macroid .sw-theme-dots ul.step-anchor li.clickable:not(.active):not(.done) a:hover {
+                color: $contentwizard-hovercolor !important;
+            }
+        #end
+        }
+    </style>
+</div>

@@ -1,0 +1,57 @@
+.ft-contentwizard { 
+    @import 'original/smart_wizard';
+
+    // small, .small {
+    //     font-size: 80%;
+    //     font-weight: 400;
+    // }
+    .step-content {
+        overflow-x: auto;
+    }
+
+    .sw-theme-default {
+        .step-content {
+            padding: 15px 15px;
+        }
+        ul.step-anchor li.done a {
+            color: inherit !important;
+        }
+
+        ul.step-anchor li.clickable > a:hover {
+            color: inherit !important;
+        }
+    }
+
+    small {
+        color: inherit;
+    }
+
+    &.conf-macro {
+        margin-top: 1rem;
+    }
+
+    ul.step-anchor li {
+        a, a:hover {
+            cursor: not-allowed;
+        }
+
+        &.done, &.active, &.clickable {
+            a, a:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    
+    .contentwizard-show-false {
+        display: none;
+    }
+}
+
+// TODO: CHeck if useful?
+// .wiki-content #ft-contentwizard ul {
+//     list-style-type: none;
+// }
+
+// #ft-contentwizard-settings {
+//     display: none;
+// }

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<atlassian-plugin-marketing>
+    <!--
+    <compatibility>
+        <product name="confluence" min="7.0" max="4.4.1"/>
+    </compatibility>
+    -->
+
+    <!-- Describe your app logo and banner. The banner is only displayed in the UPM. -->
+    <logo image="images/app_logo_144x144.png"/>
+    <banner image="images/marketing/App_Banner.png"/>
+
+    <!-- Describe highlight and cropped highlight image assets, in order. -->
+    <highlights>
+        <highlight image="images/marketing/highlight_screen_1.png" cropped="images/marketing/highlight_screen_1_cropped.png"/>
+        <highlight image="images/marketing/highlight_screen_2.png" cropped="images/marketing/highlight_screen_2_cropped.png"/>
+        <highlight image="images/marketing/highlight_screen_3.png" cropped="images/marketing/highlight_screen_3.png"/>
+    </highlights>
+   
+    <!-- Describe additional screenshots you'd like listed on your app listing. -->
+    <screenshots>
+        <screenshot image="images/marketing/screen_4.png"/>
+        <screenshot image="images/marketing/screen_5.png"/>
+    </screenshots>
+</atlassian-plugin-marketing>

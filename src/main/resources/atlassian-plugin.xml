@@ -1,0 +1,115 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/app_icon_16x16.png</param>
+        <param name="plugin-logo">images/app_logo_144x144.png</param>
+
+        <param name="plugin-banner">images/marketing/App_Banner.png</param>
+        <param name="vendor-logo">images/vendor_72.png</param>
+        <param name="vendor-icon">images/vendor_16.png</param>
+
+        <param name="atlassian-licensing-enabled">false</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="contentwizard_lang"/>
+    <resource type="download" name="images/" location="/images"/>
+    
+    <!-- add our web resources -->
+    <web-resource key="contentwizard-resources" name="contentwizard Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <!-- <dependency>com.atlassian.plugins.atlassian-plugins-webresource-plugin:format</dependency> -->
+
+        <!-- SmartWizard dependencies -->
+<!--        <resource type="download" name="bootstrap.min.css" location="/smartwizard/bootstrap/css/bootstrap.min.css"/>-->
+        <resource type="download" name="bootstrap_adapted.min.css" location="/smartwizard/bootstrap/css/bootstrap_adapted.min.css"/>
+        <resource type="download" name="smartwizard_adapted.min.css" location="/smartwizard/smartwizard/css/smart_wizard_adapted.min.css"/>
+        <resource type="download" name="jquery.smartWizard_adapted.min.js" location="/smartwizard/smartwizard/js/jquery.smartWizard_adapted.js"/>
+
+        <!-- <resource type="download" name="contentwizard.css" location="/css/contentwizard.css"/> -->
+        <resource type="download" name="contentwizard-main.js" location="/js/contentwizard-main.js"/>
+
+        <context>contentwizard</context>
+    </web-resource>
+
+    <web-resource key="contentwizard-resources-theme-arrows" name="contentwizard Web Resources Theme Arrows">
+        <resource type="download" name="smart_wizard_theme_arrows.min.css" location="/smartwizard/smartwizard/css/smart_wizard_theme_arrows_adapted.min.css"/>
+        <context>contentwizard-theme-arrows</context>
+    </web-resource>
+
+    <web-resource key="contentwizard-resources-theme-circles" name="contentwizard Web Resources Theme Circles">
+        <resource type="download" name="smart_wizard_theme_circles.min.css" location="/smartwizard/smartwizard/css/smart_wizard_theme_circles_adapted.min.css"/>
+        <context>contentwizard-theme-circles</context>
+    </web-resource>
+
+    <web-resource key="contentwizard-resources-theme-dots" name="contentwizard Web Resources Theme Dots">
+        <resource type="download" name="smart_wizard_theme_dots.min.css" location="/smartwizard/smartwizard/css/smart_wizard_theme_dots_adapted.min.css"/>
+        <context>contentwizard-theme-dots</context>
+    </web-resource>
+
+    <web-resource key="contentwizard-resources-theme-confluence" name="contentwizard Web Resources Theme Confluence">
+        <!--<dependency>com.atlassian.auiplugin:aui-tabs</dependency>-->
+        <dependency>com.atlassian.auiplugin:aui-button</dependency>
+        <resource type="download" name="smart_wizard_theme_confluence.min.css" location="/smartwizard/smartwizard/css/smart_wizard_theme_confluence.min.css"/>
+
+        <transformation extension="soy">
+            <transformer key="soyTransformer"/>
+        </transformation>
+        <resource type="download" name="soyhelper.js" location="/soy/soyhelper.soy"/>
+
+        <context>contentwizard-theme-confluence</context>
+    </web-resource>
+
+<!--    <web-resource  key="contentwizard-resources-editor" name="contentwizard Resources Editor">-->
+<!--        <resource type="download" name="contentwizard-editor.js" location="/js/contentwizard-editor.js"/>-->
+<!--        <context>editor</context>-->
+<!--        <dependency>com.atlassian.confluence.tinymceplugin:editor-resources</dependency>-->
+<!--    </web-resource>-->
+
+<!--    <xhtml-macro name="contentwizard-macro" class="de.fuchsteufels.confluence.contentwizard.ContentWizardMacro" key="contentwizard-macro" icon="/download/resources/${project.groupId}.${project.artifactId}/images/pluginLogo.png">--> <!-- icon path leads to nullpointer -->
+    <xhtml-macro name="contentwizard-macro" class="de.fuchsteufels.confluence.contentwizard.ContentWizardMacro" key="contentwizard-macro" icon="/download/resources/${project.groupId}.${project.artifactId}/images/macro_icon_80x80.png">
+        <category name="formatting"/>
+        <parameters>
+            <parameter name="enableallanchors" type="boolean" default="false" />
+            <parameter name="theme" type="enum" required="true" default="confluence">
+                <value name="confluence"/>
+                <value name="default"/>
+                <value name="arrows"/>
+                <value name="circles"/>
+                <value name="dots"/>
+            </parameter>
+            <parameter name="transitioneffect" type="enum" required="true" default="fade">
+                <value name="fade"/>
+                <value name="slide"/>
+                <value name="none"/>
+            </parameter>
+            <parameter name="buttonposition" type="enum" required="true" default="left">
+                <value name="left"/>
+                <value name="right"/>
+            </parameter>
+            <parameter name="langnext" type="string" />
+            <parameter name="langprev" type="string" />
+            <parameter name="selectedcolor" type="string" />
+            <parameter name="donecolor" type="string" />
+            <parameter name="showstepcontenttitle" type="boolean" default="false"/>
+        </parameters>
+        <!--
+        <property-panel>
+            <button id="contentwizard-addstep" label="de.fuchsteufels.confluence.contentwizard.contentwizard-macro.propertypanel.addstep" />
+        </property-panel>
+        -->
+        <device-type>mobile</device-type>
+    </xhtml-macro>
+
+    <xhtml-macro name="contentwizard-step-macro" class="de.fuchsteufels.confluence.contentwizard.ContentWizardStepMacro" key="contentwizard-step-macro" icon="/download/resources/${project.groupId}.${project.artifactId}/images/macro_icon_80x80.png">
+        <category name="formatting"/>
+        <parameters>
+            <parameter name="steptitle" type="string" required="true"/>
+            <parameter name="stepsubtitle" type="string"/>
+        </parameters>
+        <device-type>mobile</device-type>
+    </xhtml-macro>
+    
+</atlassian-plugin>

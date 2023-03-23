@@ -1,0 +1,40 @@
+<div class="ft-contentwizard" id="mid_$contentwizard-macroid">
+    <div class="ft-contentwizard-base">
+        <ul>
+            #if($contentwizard-steps.size() > 0)
+                #foreach($step in $contentwizard-steps)
+                    <li><a href="#$step.macroid">$step.steptitle<br /><small>$!step.stepsubtitle</small></a><div class="arrow-container"></div></li>
+                #end
+            #else
+                <li><a href="#step-1">Demo 1<br /><small>Demo Step 1</small></a><div class="arrow-container"></div></li>
+                <li><a href="#step-2">Demo 2<br /><small>Demo Step 2</small></a><div class="arrow-container"></div></li>
+            #end
+        </ul>
+        <div>
+            #set($bodyWithHtml = $contentwizard-license.getMessage())
+            #if($contentwizard-steps.size() > 0)
+                #foreach($step in $contentwizard-steps)
+                    #if($contentwizard-license.isValid())
+                        #set($bodyWithHtml = $step.body)
+                    #end
+                    <div id="$step.macroid" class="">
+                        <h2 class="contentwizard-show-${contentwizard-stepcontenttitle}">$step.steptitle</h2>
+                        $bodyWithHtml
+                    </div>
+                #end
+            #else
+                #if($contentwizard-license.isValid())
+                    #set($bodyWithHtml = $i18n.getText("de.fuchsteufels.confluence.contentwizard.demo.instruction"))
+                #end
+                <div id="step-1" class="">
+                    <h2 class="contentwizard-show-${contentwizard-stepcontenttitle}">Demo 1</h2>
+                    $bodyWithHtml
+                </div>
+                <div id="step-2" class="">
+                    <h2 class="contentwizard-show-${contentwizard-stepcontenttitle}">Demo 2</h2>
+                    $bodyWithHtml
+                </div>
+            #end
+        </div>
+    </div>
+</div>

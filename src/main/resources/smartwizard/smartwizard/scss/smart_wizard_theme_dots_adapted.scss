@@ -1,0 +1,123 @@
+.ft-contentwizard { 
+    @import 'original/smart_wizard_theme_dots';
+
+    /* Fixes for confluence */
+
+    // .sw-theme-dots > ul.step-anchor > li {
+    //     a {
+    //         &::after, &::before {
+    //             left: 50%;
+    //             bottom: 0;
+    //         }
+
+    //         &::after {
+    //             margin-left: -7.5px;
+    //         }
+            
+    //         &::before {
+    //             margin-left: -15px;
+    //         }
+    //     }
+    // } 
+
+    // .sw-theme-dots > ul.step-anchor::before {
+    //     top: 63px;
+    // }
+
+    /* Fixes for confluence application */
+    .sw-theme-dots {
+        ul.step-anchor {
+            li {
+                a {
+                    &::after, &::before {
+                        left: 50%;
+                        bottom: 0;
+                    }
+        
+                    &::after {
+                        margin-left: -7.4px;
+                    }
+                    
+                    &::before {
+                        margin-left: -15px;
+                    }
+                }
+            }
+            
+            &::before {
+                top: 63px;
+            }
+        }
+        
+        // Theme adaptions for wizards without subtitles
+        &.nosubtitles {
+            ul.step-anchor {
+
+
+                &::before {
+                    top: 43px;
+                }
+            }
+        }
+
+        .sw-toolbar {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .mr-2 {
+            margin-right: 0 !important;
+        }
+    }
+
+
+    @media screen and (max-width: 768px) {
+        .sw-theme-dots > ul.step-anchor > li {
+            a {
+                margin-bottom: -30px;
+                
+                &::after, &::before {
+                    left: 0;
+                }
+
+                &::before {
+                    margin-left: -20px;
+                }
+
+                &::after {
+                    margin-left: -28px;
+                    top: -35.5px;
+                }
+            }
+        } 
+
+        .sw-theme-dots > ul.step-anchor::before {
+            display: none;
+        }
+
+        .sw-theme-dots.nosubtitles {
+            ul.step-anchor {
+                li {
+                    margin-bottom: 10px;
+
+                    a {
+                        // &::after, &::before {
+                        //     left: 50%;
+                        //     bottom: 0;
+                        // }
+            
+                        &::after {
+                            top: -27.5px;
+                        }
+                        
+                        &::before {
+                            top: -7px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}
+

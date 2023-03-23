@@ -1,0 +1,7 @@
+.wiki-content #ft-contentwizard ul {
+    list-style-type: none;
+}
+
+#ft-contentwizard-settings {
+    display: none;
+}

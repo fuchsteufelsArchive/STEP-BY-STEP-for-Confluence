@@ -1,0 +1,122 @@
+.ft-contentwizard { 
+    .sw-theme-confluence {
+        ul.nav-tabs {
+            border-bottom: none;
+
+            // AUI
+            position: relative;
+            display: flex;
+            flex-flow: row wrap;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+            &::before {
+                background: #EBECF0;
+                bottom: 0;
+                content: "";
+                display: block;
+                height: 2px;
+                //left: 10px;
+                left: 0;
+                position: absolute;
+                //right: 10px;
+                right: 0;
+                width: initial;
+                z-index: auto;
+            }
+
+            li.nav-item {
+                margin: 0;
+
+                &.active, &.done {
+                    a {
+                        &.nav-link::after {
+                            -webkit-transform: scale(1);
+                            transform: scale(1);
+                        }
+                    }
+                }
+
+                &.done {
+                    a, a:hover {
+                        color:inherit;
+                    }
+                }
+
+                a.nav-link::after {
+                    -webkit-transform: scale(0);
+                    transform: scale(0);
+
+                    // AUI
+                    background:#0052CC;
+                    bottom: 0;
+                    content: "";
+                    display: block;
+                    height: 2px;
+                    //left: 10px;
+                    left: 0px;
+                    position: absolute;
+                    //right: 10px;
+                    right: 20px;
+                    width: initial;
+                    z-index: 1;
+                }
+
+                a, a:hover {
+                    border: none !important;
+                    color: #bbb;
+                    text-decoration: none;
+                    outline-style: none;
+                    background: transparent !important;
+                    border: none !important;
+                }
+
+                &:last-child a.nav-link {
+                    padding-right: 0;
+
+                    &::after {
+                        right: 0;
+                    }
+                }
+
+            }
+
+            a.nav-link {
+                border: none;
+
+                // AUI
+                display: block;
+                //padding: 5px 10px;
+                padding: 5px 20px 5px 0;
+                text-decoration: none;
+                position: relative;
+            }
+        }
+
+        .step-content {
+            //padding-left: 10px;
+            //padding-right: 10px;
+            padding-top: 10px;
+        }
+
+        .sw-toolbar {
+
+        }
+    }
+
+    .aui-buttons.ft-contentwizard-conf-theme {
+        padding: 10px 0;
+
+        &.ft-btn-position_right {
+            display: block;
+            text-align: right;
+        }
+
+        &.mobileweb button:first-child {
+            float: left;
+            margin-right: 5px;
+        }
+    }
+}
+

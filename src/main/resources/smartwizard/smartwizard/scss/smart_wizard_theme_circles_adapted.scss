@@ -1,0 +1,56 @@
+.ft-contentwizard { 
+    @import 'original/smart_wizard_theme_circles';
+
+    .sw-theme-circles {
+        .sw-toolbar {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+        .mr-2 {
+            margin-right: 0 !important;
+        }
+
+        > ul.step-anchor {
+            margin-bottom: 35px;
+
+            &::before {
+                margin-top: -2.5px;
+            }
+        }
+
+        > ul.step-anchor > li {
+            > a {
+                padding: 27px 0;
+                line-height: 1;
+
+                > small {
+                    bottom: -35px;
+                }
+            }
+
+            &.clickable > a:hover {
+                color: #fff !important;
+            }
+
+        }
+
+        @media screen and (max-width: 768px) {
+            > ul.step-anchor{
+                margin-bottom: 0;
+
+                &::before {
+                    display: none;
+                }
+                
+                li {
+                    margin: 0 10px 50px;
+                }
+            }
+
+            .step-content {
+                padding: 0 0 10px;
+            }
+        }
+    }
+}

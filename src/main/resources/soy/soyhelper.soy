@@ -1,0 +1,26 @@
+{namespace de.fuchsteufels.confluence.contentwizard.templates.soyhelper}
+/**
+ * Renders two AUI styled buttons
+ * @param position Position of the buttons
+ * @param langNext String label of next button
+ * @param langPrev String label of prev button
+ */
+{template .auibuttons}
+<div class="aui-buttons ft-contentwizard-conf-theme ft-btn-position_{$position}">
+    <button class="aui-button ft-cw-aui-btn-prev">{$langPrev}</button>
+    <button class="aui-button ft-cw-aui-btn-next">{$langNext}</button>
+</div>
+{/template}
+
+/**
+ * Renders two AUI styled buttons for mobile web view
+ * @param position Position of the buttons
+ * @param langNext String label of next button
+ * @param langPrev String label of prev button
+ */
+{template .auibuttonsmobile}
+<div class="aui-buttons mobileweb ft-contentwizard-conf-theme ft-btn-position_{$position}">
+    <button class="button ft-cw-aui-btn-prev">{$langPrev}</button>
+    <button class="button ft-cw-aui-btn-next">{$langNext}</button>
+</div>
+{/template}
